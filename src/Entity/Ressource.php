@@ -7,8 +7,14 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=RessourceRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "challenge" = "Challenge",
+ *     "synopsis" = "Synopsis"
+ * })
  */
-class Ressource
+abstract class Ressource
 {
     /**
      * @ORM\Id
@@ -21,6 +27,21 @@ class Ressource
      * @ORM\Column(type="boolean")
      */
     private $validate;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $suspend;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $share;
 
     public function getId(): ?int
     {
@@ -35,6 +56,42 @@ class Ressource
     public function setValidate(bool $validate): self
     {
         $this->validate = $validate;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): self
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSuspend(): ?bool
+    {
+        return $this->suspend;
+    }
+
+    public function setSuspend(bool $suspend): self
+    {
+        $this->suspend = $suspend;
+
+        return $this;
+    }
+
+    public function getShare(): ?bool
+    {
+        return $this->share;
+    }
+
+    public function setShare(bool $share): self
+    {
+        $this->share = $share;
 
         return $this;
     }

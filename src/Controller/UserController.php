@@ -22,11 +22,19 @@ class UserController extends AbstractController
     public function getInfos(SerializerInterface $serializer): JsonResponse
     {
         //dd($this->getUser());
+        $user = $this->getUser();
+        if (!$user) {
+            throw new \Exception("Vous n'êtes pas connecté");
+        }
         return new JsonResponse(
-            $serializer->serialize($this->getUser(), 'json', ['groups' => 'get']),
+            $serializer->serialize($user, 'json', ['groups' => 'get']),
             200,
             [],
             true
         );
     }
+
+    //Créer des formulaire différents en fonction du type de ressource
+    //Coté API créer un méthode pour chaque type.
+    // Ou créer une fonction globale ou on récupère les données ensemble exemple : Type de ressource, Ressource, Category
 }

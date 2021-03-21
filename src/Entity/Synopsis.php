@@ -4,63 +4,64 @@ namespace App\Entity;
 
 use App\Repository\SynopsisRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SynopsisRepository::class)
  */
 class Synopsis extends Ressource
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"ressource:get"})
      */
     private $author;
 
     /**
      * @ORM\Column(type="date_immutable")
+     * @Groups({"ressource:get"})
      */
     private $birthdayAuthor;
 
     /**
      * @ORM\Column(type="date_immutable", nullable=true)
+     * @Groups({"ressource:get"})
      */
     private $deathAuthor;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"ressource:get"})
      */
     private $literaryMovement;
 
     /**
      * @ORM\Column(type="date_immutable")
+     * @Groups({"ressource:get"})
      */
     private $publishDate;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"ressource:get"})
      */
     private $genre;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"ressource:get"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"ressource:get"})
      */
     private $opinion;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 
     public function getAuthor(): ?string
     {

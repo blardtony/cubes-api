@@ -40,18 +40,22 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"get"})
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="date_immutable")
+     * @ORM\Column(type="date")
+     * @Groups({"get"})
      */
     private $birthday;
+
 
     public function getId(): ?int
     {
@@ -169,4 +173,6 @@ class User implements UserInterface
 
         return $this;
     }
+
+
 }

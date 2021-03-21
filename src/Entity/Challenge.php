@@ -4,33 +4,24 @@ namespace App\Entity;
 
 use App\Repository\ChallengeRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=ChallengeRepository::class)
  */
 class Challenge extends Ressource
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"ressource:get"})
      */
     private $content;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"ressource:get"})
      */
     private $bonus;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getContent(): ?string
     {

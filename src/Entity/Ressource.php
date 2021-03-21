@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RessourceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RessourceRepository::class)
@@ -20,26 +21,31 @@ abstract class Ressource
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"ressource:get"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"ressource:get"})
      */
     private $validate;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"ressource:get"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"ressource:get"})
      */
     private $suspend;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"ressource:get"})
      */
     private $share;
 

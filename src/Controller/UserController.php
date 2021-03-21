@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/api/user/me", name="article", methods={"GET"})
+     * @Route("/api/user/me", name="user_infos", methods={"GET"})
      * @param SerializerInterface $serializer
      * @return JsonResponse
      */

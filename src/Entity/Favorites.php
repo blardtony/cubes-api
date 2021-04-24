@@ -22,6 +22,16 @@ class Favorites
      */
     private $date;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Ressource::class, cascade={"persist", "remove"})
+     */
+    private $ressource;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Citizen::class, inversedBy="favorites")
+     */
+    private $citizen;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +45,30 @@ class Favorites
     public function setDate(\DateTimeImmutable $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getRessource(): ?Ressource
+    {
+        return $this->ressource;
+    }
+
+    public function setRessource(?Ressource $ressource): self
+    {
+        $this->ressource = $ressource;
+
+        return $this;
+    }
+
+    public function getCitizen(): ?Citizen
+    {
+        return $this->citizen;
+    }
+
+    public function setCitizen(?Citizen $citizen): self
+    {
+        $this->citizen = $citizen;
 
         return $this;
     }

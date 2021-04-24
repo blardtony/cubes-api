@@ -51,7 +51,7 @@ class User implements UserInterface
     private $firstname;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date_immutable")
      * @Groups({"get"})
      */
     private $birthday;

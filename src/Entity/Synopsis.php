@@ -17,7 +17,7 @@ class Synopsis extends Ressource
      * @ORM\Column(type="string", length=255)
      * @Groups({"ressource:get"})
      */
-    private $author;
+    private $authorBook;
 
     /**
      * @ORM\Column(type="date_immutable")
@@ -63,14 +63,14 @@ class Synopsis extends Ressource
 
 
 
-    public function getAuthor(): ?string
+    public function getAuthorBook(): ?string
     {
-        return $this->author;
+        return $this->authorBook;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthorBook(string $authorBook): self
     {
-        $this->author = $author;
+        $this->authorBook = $authorBook;
 
         return $this;
     }

@@ -49,6 +49,18 @@ abstract class Ressource
      */
     private $share;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Citizen::class, inversedBy="ressources")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -98,6 +110,30 @@ abstract class Ressource
     public function setShare(bool $share): self
     {
         $this->share = $share;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Citizen
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Citizen $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

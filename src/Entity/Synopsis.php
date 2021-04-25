@@ -43,11 +43,7 @@ class Synopsis extends Ressource
      */
     private $publishDate;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"ressource:get"})
-     */
-    private $genre;
+
 
     /**
      * @ORM\Column(type="text")
@@ -123,17 +119,6 @@ class Synopsis extends Ressource
         return $this;
     }
 
-    public function getGenre(): ?string
-    {
-        return $this->genre;
-    }
-
-    public function setGenre(string $genre): self
-    {
-        $this->genre = $genre;
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {

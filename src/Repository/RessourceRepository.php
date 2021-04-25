@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Ressource;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,22 +20,20 @@ class RessourceRepository extends ServiceEntityRepository
         parent::__construct($registry, Ressource::class);
     }
 
-    // /**
-    //  * @return Ressource[] Returns an array of Ressource objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findByCategory(int $id)
     {
         return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
-            ->setParameter('val', $value)
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.id = :val')
+            ->setParameter('val', $id)
             ->orderBy('r.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+
 
     /*
     public function findOneBySomeField($value): ?Ressource

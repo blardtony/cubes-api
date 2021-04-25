@@ -10,8 +10,11 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"citizen"="Citizen", "admin"="Admin"})
  */
-class User implements UserInterface
+abstract class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -55,6 +58,7 @@ class User implements UserInterface
      * @Groups({"get"})
      */
     private $birthday;
+
 
 
     public function getId(): ?int

@@ -21,10 +21,14 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager)
     {
-        $category = new Category();
-        $category->setName("Categorie");
-        $manager->persist($category);
 
+
+        $categories = ["Communication", "Cultures", "Développement personnel", "Intelligence émotionnelle", "Loisirs", "Monde porfessionnel", "Parentalité", "Qualité de vue", "Recherche de sens", "Santé physique", "Santé psychique", "Spiritualité", "Vie affective"];
+        foreach ($categories as $value) {
+            $category = new Category();
+            $category->setName($value);
+            $manager->persist($category);
+        }
         for ($i=0; $i <=2 ; $i++) {
             $user = new Citizen();
             $user->setEmail(sprintf("email%d@gmail.com", $i));
@@ -59,11 +63,13 @@ class UserFixtures extends Fixture
             $synopsis->setBirthdayAuthor(new \DateTimeImmutable('1985-09-16 00:00'));
             $synopsis->setAuthorBook("Auteur");
             $synopsis->setDeathAuthor(new \DateTimeImmutable('2010-09-16 00:00'));
-            $synopsis->setGenre("Genre");
+
             $synopsis->setLiteraryMovement("Mouvement litérraire");
             $synopsis->setOpinion("Mauvais");
             $synopsis->setPublishDate(new \DateTimeImmutable('2000-09-16 00:00'));
             $synopsis->setAuthor($user);
+
+
             $manager->persist($challenge);
             $manager->persist($synopsis);
         }

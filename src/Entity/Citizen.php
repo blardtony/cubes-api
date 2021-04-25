@@ -40,6 +40,7 @@ class Citizen extends User
         $this->ressources = new ArrayCollection();
         $this->asides = new ArrayCollection();
         $this->favorites = new ArrayCollection();
+        $this->setRoles(["ROLE_USER"]);
     }
 
     public function getId(): ?int

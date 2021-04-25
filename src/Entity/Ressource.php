@@ -52,6 +52,8 @@ abstract class Ressource
     /**
      * @ORM\ManyToOne(targetEntity=Category::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"ressource:get"})
+     *
      */
     private $category;
 
@@ -60,6 +62,12 @@ abstract class Ressource
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    public function __construct() {
+        $this->validate = false;
+        $this->suspend = false;
+        $this->share=false;
+    }
 
     public function getId(): ?int
     {

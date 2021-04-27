@@ -46,7 +46,7 @@ class UserController extends AbstractController
     // Ou créer une fonction globale ou on récupère les données ensemble exemple : Type de ressource, Ressource, Category
 
     /**
-     * @Route("/challenge", name="challenge_post", methods={"POST"})
+     * @Route("/challenge", name="challenge_post", methods={"POST", "OPTIONS"})
      * @param SerializerInterface $serializer
      * @param Request $request
      * @param EntityManagerInterface $entityManager

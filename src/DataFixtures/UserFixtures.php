@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Admin;
 use App\Entity\Category;
 use App\Entity\Citizen;
 use App\Entity\Synopsis;
@@ -22,6 +23,17 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
 
+        $admin = new Admin();
+        $admin->setEmail("admin@gmail.com");
+
+        $admin->setPassword($this->PasswordEncode->encodePassword(
+            $admin,
+            'the_new_password'
+        ));
+        $admin->setFirstname("Tony");
+        $admin->setName("BLARD");
+        $admin->setBirthday(new \DateTimeImmutable('1998-09-16 00:00'));
+        $manager->persist($admin);
 
         $categories = ["Communication", "Cultures", "Développement personnel", "Intelligence émotionnelle", "Loisirs", "Monde porfessionnel", "Parentalité", "Qualité de vue", "Recherche de sens", "Santé physique", "Santé psychique", "Spiritualité", "Vie affective"];
         foreach ($categories as $value) {

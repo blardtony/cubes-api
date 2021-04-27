@@ -32,6 +32,7 @@ abstract class User implements UserInterface
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"get"})
      */
     private $roles = [];
 

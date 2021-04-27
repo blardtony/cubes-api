@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass=AdminRepository::class)
  * @ORM\Table(name="`admin`")
  */
-class Admin
+class Admin extends User
 {
     /**
      * @ORM\Id
@@ -18,6 +18,9 @@ class Admin
      */
     private $id;
 
+    public function __construct() {
+        $this->setRoles(["ROLE_ADMIN"]);
+    }
     public function getId(): ?int
     {
         return $this->id;

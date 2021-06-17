@@ -2,11 +2,9 @@
 
 namespace App\Tests;
 
-use App\Entity\Admin;
 use App\Entity\Category;
 use App\Entity\Challenge;
 use App\Entity\Citizen;
-use Doctrine\Persistence\ObjectRepository;
 use PHPUnit\Framework\TestCase;
 
 class RessourceUnitTest extends TestCase

@@ -27,12 +27,25 @@ class RessourceRepository extends ServiceEntityRepository
             ->leftJoin('r.category', 'c')
             ->andWhere('c.id = :val')
             ->setParameter('val', $id)
+            ->andWhere('r.validate = true')
             ->orderBy('r.id', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
 
+    public function findByCategoryUnvalid(int $id)
+    {
+        return $this->createQueryBuilder('r')
+            ->leftJoin('r.category', 'c')
+            ->andWhere('c.id = :val')
+            ->setParameter('val', $id)
+            ->andWhere('r.validate = false')
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
 
     /*

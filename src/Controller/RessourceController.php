@@ -24,7 +24,26 @@ class RessourceController extends AbstractController
      */
     public function getAllRessources(SerializerInterface $serializer, RessourceRepository $ressourceRepository): JsonResponse
     {
-        $ressources = $ressourceRepository->findAll();
+        $ressources = $ressourceRepository->findBy(["validate"=> true]);
+
+        return new JsonResponse(
+            $serializer->serialize($ressources, 'json', ['groups' => 'ressource:get']),
+            200,
+            [],
+            true
+        );
+
+    }
+
+    /**
+     * @Route("/ressources/{id}", name="ressource_one", methods={"GET"})
+     * @param SerializerInterface $serializer
+     * @param RessourceRepository $ressourceRepository
+     * @return JsonResponse
+     */
+    public function getRessource(SerializerInterface $serializer, RessourceRepository $ressourceRepository, int $id): JsonResponse
+    {
+        $ressources = $ressourceRepository->find($id);
 
         return new JsonResponse(
             $serializer->serialize($ressources, 'json', ['groups' => 'ressource:get']),

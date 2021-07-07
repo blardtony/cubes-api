@@ -11,7 +11,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorColumn(name="typeCitizen", type="string")
  * @ORM\DiscriminatorMap({"citizen"="Citizen", "admin"="Admin"})
  */
 abstract class User implements UserInterface

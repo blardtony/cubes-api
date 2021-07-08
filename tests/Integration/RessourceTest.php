@@ -4,12 +4,12 @@ namespace App\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class SynopsisTest extends WebTestCase
+class RessourceTest extends WebTestCase
 {
-    public function testSomething(): void
+    public function testGetAllRessources(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/synopsis');
+        $crawler = $client->request('GET', '/ressources');
 
         $this->assertResponseIsSuccessful();
     }

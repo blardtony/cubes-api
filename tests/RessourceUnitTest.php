@@ -30,7 +30,6 @@ class RessourceUnitTest extends TestCase
     public function testCreationChallenge(): void
     {
 
-
         $ressource = new Challenge();
 
         $ressource->setTitle("Titre")
